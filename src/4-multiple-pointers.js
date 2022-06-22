@@ -53,23 +53,40 @@ function sumZero(arr) {
 //     return count;
 // }
 
-function countUniqueValues(sortedArray) {
-    if (sortedArray.length === 0) {
+// function countUniqueValues(sortedArray) {
+//     if (sortedArray.length === 0) {
+//         return 0;
+//     }
+
+//     let first = 0;
+
+//     for (let i = 1; i < sortedArray.length; i++) {
+//         if (sortedArray[first] === sortedArray[i]) {
+//             continue;
+//         } else {
+//             first++;
+//             sortedArray[first] = sortedArray[i];
+//         }
+//     }
+
+//     return first + 1;
+// }
+
+function countUniqueValues(arr) {
+    if (arr.length === 0) {
         return 0;
     }
 
-    let first = 0;
+    let i = 0;
 
-    for (let i = 1; i < sortedArray.length; i++) {
-        if (sortedArray[first] === sortedArray[i]) {
-            continue;
-        } else {
-            first++;
-            sortedArray[first] = sortedArray[i];
+    for (let j = 1; j < arr.length; j++) {
+        if (arr[i] !== arr[j]) {
+            i++;
+            arr[i] = arr[j];
         }
     }
 
-    return first + 1;
+    return i + 1;
 }
 
 console.log(countUniqueValues([1, 1, 1, 1, 1, 2])); // 2
