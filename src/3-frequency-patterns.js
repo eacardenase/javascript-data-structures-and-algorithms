@@ -6,12 +6,9 @@ function same(array1, array2) {
     const obj1 = {};
     const obj2 = {};
 
-    for (let num of array1) {
-        obj1[num ** 2] = ++obj1[num ** 2] || 1;
-    }
-
-    for (let num of array2) {
-        obj2[num] = ++obj2[num] || 1;
+    for (let i = 0; i < array1.length; i++) {
+        obj1[array1[i] ** 2] = ++obj1[array1[i] ** 2] || 1;
+        obj2[array2[i]] = ++obj2[array2[i]] || 1;
     }
 
     for (let prop in obj1) {
