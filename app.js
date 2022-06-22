@@ -1,1 +1,1 @@
-require('./src/2-algorithms-patterns');
+require('./src/3-frequency-patterns');
