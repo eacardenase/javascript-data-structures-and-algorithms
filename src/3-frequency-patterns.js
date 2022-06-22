@@ -24,25 +24,51 @@ function same(array1, array2) {
 // console.log(same([1, 2, 3], [1, 9])); // false
 // console.log(same([1, 2, 1], [4, 4, 1])); // false
 
-function validAnagram(str1, str2) {
-    if (str1.length !== str2.length) {
+// function validAnagram(str1, str2) {
+//     if (str1.length !== str2.length) {
+//         return false;
+//     }
+
+//     const str1Lower = str1.toLowerCase();
+//     const str2Lower = str2.toLowerCase();
+
+//     const obj1 = {};
+//     const obj2 = {};
+
+//     for (let i = 0; i < str1Lower.length; i++) {
+//         obj1[str1Lower[i]] = ++obj1[str1Lower[i]] || 1;
+//         obj2[str2Lower[i]] = ++obj2[str2Lower[i]] || 1;
+//     }
+
+//     for (let letter in obj1) {
+//         if (obj1[letter] !== obj2[letter]) {
+//             return false;
+//         }
+//     }
+
+//     return true;
+// }
+
+function validAnagram(first, second) {
+    if (first.length !== second.length) {
         return false;
     }
 
-    const str1Lower = str1.toLowerCase();
-    const str2Lower = str2.toLowerCase();
+    const lookup = {};
 
-    const obj1 = {};
-    const obj2 = {};
+    for (let i = 0; i < first.length; i++) {
+        let letter = first[i];
 
-    for (let i = 0; i < str1Lower.length; i++) {
-        obj1[str1Lower[i]] = ++obj1[str1Lower[i]] || 1;
-        obj2[str2Lower[i]] = ++obj2[str2Lower[i]] || 1;
+        lookup[letter] ? lookup[letter]++ : (lookup[letter] = 1);
     }
 
-    for (let letter in obj1) {
-        if (obj1[letter] !== obj2[letter]) {
+    for (let i = 0; i < second.length; i++) {
+        let letter = second[i];
+
+        if (!lookup[letter]) {
             return false;
+        } else {
+            lookup[letter]--;
         }
     }
 
