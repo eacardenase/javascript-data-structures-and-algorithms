@@ -1,1 +1,1 @@
-require('./src/1-big-o');
+require('./src/2-algorithms-patterns');
