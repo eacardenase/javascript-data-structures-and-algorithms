@@ -5,9 +5,19 @@
  */
 
 function search(sortedArray, num) {
-    for (let i = 0; i < sortedArray.length; i++) {
-        if (sortedArray[i] === num) {
-            return i;
+    let min = 0;
+    let max = sortedArray.length - 1;
+
+    while (min <= max) {
+        let middle = Math.floor((min + max) / 2);
+        let currentElement = sortedArray[middle];
+
+        if (currentElement < num) {
+            min = middle + 1;
+        } else if (currentElement > num) {
+            max = middle - 1;
+        } else {
+            return middle;
         }
     }
 
