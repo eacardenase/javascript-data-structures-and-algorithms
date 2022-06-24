@@ -113,7 +113,31 @@ function sameFrequency(num1, num2) {
     return true;
 }
 
-console.log(sameFrequency(182, 281)); // true
-console.log(sameFrequency(34, 14)); // false
-console.log(sameFrequency(3589578, 5879385)); // true
-console.log(sameFrequency(22, 222)); // false
+// console.log(sameFrequency(182, 281)); // true
+// console.log(sameFrequency(34, 14)); // false
+// console.log(sameFrequency(3589578, 5879385)); // true
+// console.log(sameFrequency(22, 222)); // false
+
+/**
+ *
+ * @param  {...any} args
+ * @return {boolean}
+ */
+
+function areThereDuplicates(...args) {
+    const obj = {};
+
+    for (let i = 0; i < args.length; i++) {
+        if (obj[args[i]]) {
+            return true;
+        } else {
+            obj[args[i]] = 1;
+        }
+    }
+
+    return false;
+}
+
+console.log(areThereDuplicates(1, 2, 3));
+console.log(areThereDuplicates(1, 2, 2));
+console.log(areThereDuplicates('a', 'b', 'c', 'a'));
