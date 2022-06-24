@@ -1,1 +1,1 @@
-require('./src/6-divide-and-conquer');
+require('./src/3-frequency-patterns');

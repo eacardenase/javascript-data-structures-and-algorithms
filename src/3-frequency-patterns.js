@@ -75,10 +75,45 @@ function validAnagram(first, second) {
     return true;
 }
 
-console.log(validAnagram('', '')); // true
-console.log(validAnagram('aaz', 'zza')); // false
-console.log(validAnagram('anagram', 'nagaram')); // true
-console.log(validAnagram('rat', 'car')); // false
-console.log(validAnagram('awesome', 'awesom')); // false
-console.log(validAnagram('qwerty', 'qeywrt')); // true
-console.log(validAnagram('texttwisttime', 'timetwisttext')); // true
+// console.log(validAnagram('', '')); // true
+// console.log(validAnagram('aaz', 'zza')); // false
+// console.log(validAnagram('anagram', 'nagaram')); // true
+// console.log(validAnagram('rat', 'car')); // false
+// console.log(validAnagram('awesome', 'awesom')); // false
+// console.log(validAnagram('qwerty', 'qeywrt')); // true
+// console.log(validAnagram('texttwisttime', 'timetwisttext')); // true
+
+/**
+ * @param {number} num1
+ * @param {number} num2
+ * @return {boolean}
+ */
+function sameFrequency(num1, num2) {
+    const number1 = num1.toString();
+    const number2 = num2.toString();
+
+    if (number1.length !== number2.length) {
+        return false;
+    }
+
+    const obj1 = {};
+    const obj2 = {};
+
+    for (let i = 0; i < number1.length; i++) {
+        obj1[number1[i]] = ++obj1[number1[i]] || 1;
+        obj2[number2[i]] = ++obj2[number2[i]] || 1;
+    }
+
+    for (let prop in obj1) {
+        if (obj1[prop] !== obj2[prop]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+console.log(sameFrequency(182, 281)); // true
+console.log(sameFrequency(34, 14)); // false
+console.log(sameFrequency(3589578, 5879385)); // true
+console.log(sameFrequency(22, 222)); // false
