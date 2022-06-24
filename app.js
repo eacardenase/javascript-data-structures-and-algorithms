@@ -1,1 +1,1 @@
-require('./src/5-sliding-window');
+require('./src/6-divide-and-conquer');
