@@ -118,6 +118,26 @@ function sameFrequency(num1, num2) {
 // console.log(sameFrequency(3589578, 5879385)); // true
 // console.log(sameFrequency(22, 222)); // false
 
+// /**
+//  *
+//  * @param  {...any} args
+//  * @return {boolean}
+//  */
+
+// function areThereDuplicates(...args) {
+//     const obj = {};
+
+//     for (let i = 0; i < args.length; i++) {
+//         if (obj[args[i]]) {
+//             return true;
+//         } else {
+//             obj[args[i]] = 1;
+//         }
+//     }
+
+//     return false;
+// }
+
 /**
  *
  * @param  {...any} args
@@ -125,19 +145,26 @@ function sameFrequency(num1, num2) {
  */
 
 function areThereDuplicates(...args) {
-    const obj = {};
+    let sortedArray = [...args];
+    sortedArray = !parseInt(sortedArray[0])
+        ? sortedArray.sort()
+        : sortedArray.sort((a, b) => a - b);
 
-    for (let i = 0; i < args.length; i++) {
-        if (obj[args[i]]) {
-            return true;
+    let left = 0;
+    let right = 1;
+
+    for (let i = 0; i < sortedArray.length; i++) {
+        if (sortedArray[left] !== sortedArray[right]) {
+            left++;
+            right++;
         } else {
-            obj[args[i]] = 1;
+            return true;
         }
     }
 
     return false;
 }
 
-console.log(areThereDuplicates(1, 2, 3));
-console.log(areThereDuplicates(1, 2, 2));
-console.log(areThereDuplicates('a', 'b', 'c', 'a'));
+console.log(areThereDuplicates(1, 2, 3)); // false
+console.log(areThereDuplicates(1, 3, 5, 6, 8, 2, 5)); // true
+console.log(areThereDuplicates('a', 'b', 'c', 'a')); // false
