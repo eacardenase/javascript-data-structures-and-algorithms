@@ -118,26 +118,6 @@ function sameFrequency(num1, num2) {
 // console.log(sameFrequency(3589578, 5879385)); // true
 // console.log(sameFrequency(22, 222)); // false
 
-// /**
-//  *
-//  * @param  {...any} args
-//  * @return {boolean}
-//  */
-
-// function areThereDuplicates(...args) {
-//     const obj = {};
-
-//     for (let i = 0; i < args.length; i++) {
-//         if (obj[args[i]]) {
-//             return true;
-//         } else {
-//             obj[args[i]] = 1;
-//         }
-//     }
-
-//     return false;
-// }
-
 /**
  *
  * @param  {...any} args
@@ -145,20 +125,13 @@ function sameFrequency(num1, num2) {
  */
 
 function areThereDuplicates(...args) {
-    let sortedArray = [...args];
-    sortedArray = !parseInt(sortedArray[0])
-        ? sortedArray.sort()
-        : sortedArray.sort((a, b) => a - b);
+    const obj = {};
 
-    let left = 0;
-    let right = 1;
-
-    for (let i = 0; i < sortedArray.length; i++) {
-        if (sortedArray[left] !== sortedArray[right]) {
-            left++;
-            right++;
-        } else {
+    for (let i = 0; i < args.length; i++) {
+        if (obj[args[i]]) {
             return true;
+        } else {
+            obj[args[i]] = 1;
         }
     }
 

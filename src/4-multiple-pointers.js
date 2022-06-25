@@ -89,8 +89,69 @@ function countUniqueValues(arr) {
     return i + 1;
 }
 
-console.log(countUniqueValues([1, 1, 1, 1, 1, 2])); // 2
-console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 7
-console.log(countUniqueValues([])); // 0
-console.log(countUniqueValues([-2, -1, -1, 0, 1])); // 4
-console.log(countUniqueValues([1, 1, 1, 2, 3, 3, 4, 4, 5, 6])); // 6
+// console.log(countUniqueValues([1, 1, 1, 1, 1, 2])); // 2
+// console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 7
+// console.log(countUniqueValues([])); // 0
+// console.log(countUniqueValues([-2, -1, -1, 0, 1])); // 4
+// console.log(countUniqueValues([1, 1, 1, 2, 3, 3, 4, 4, 5, 6])); // 6
+
+/**
+ *
+ * @param  {...any} args
+ * @return {boolean}
+ */
+
+function areThereDuplicates(...args) {
+    let sortedArray = [...args];
+    sortedArray = !parseInt(sortedArray[0])
+        ? sortedArray.sort()
+        : sortedArray.sort((a, b) => a - b);
+
+    let left = 0;
+    let right = 1;
+
+    for (let i = 0; i < sortedArray.length; i++) {
+        if (sortedArray[left] !== sortedArray[right]) {
+            left++;
+            right++;
+        } else {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// console.log(areThereDuplicates(1, 2, 3)); // false
+// console.log(areThereDuplicates(1, 3, 5, 6, 8, 2, 5)); // true
+// console.log(areThereDuplicates('a', 'b', 'c', 'a')); // false
+
+/**
+ *
+ * @param {number[]} array
+ * @param {number} average
+ * @return {boolean}
+ */
+function averagePair(array, average) {
+    let left = 0;
+    let right = array.length - 1;
+
+    while (left < right) {
+        let tempAverage = (array[left] + array[right]) / 2;
+
+        if (tempAverage === average) {
+            return true;
+        } else if (tempAverage < average) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+
+    return false;
+}
+
+console.log(averagePair([1, 2, 3], 2.5)); // true
+console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)); // true
+console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)); // false
+console.log(averagePair([], 4)); // false
