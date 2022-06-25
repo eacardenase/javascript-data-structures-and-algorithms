@@ -166,23 +166,22 @@ function isSubsequence(str1, str2) {
     let left = 0;
     let right = 0;
 
-    while (right < str2.length - 1) {
+    while (right < str2.length) {
         if (str1[left] === str2[right]) {
             left++;
-            right++;
-        } else if (str1[left] !== str2[right]) {
-            right++;
         }
+
+        right++;
     }
 
-    if (left < str1.length - 1) {
-        return false;
+    if (left === str1.length) {
+        return true;
     }
 
-    return true;
+    return false;
 }
 
 console.log(isSubsequence('hello', 'hello world')); // true
-console.log(isSubsequence('sing', 'sting')); // true
-console.log(isSubsequence('abc', 'abracadabra')); // true
-console.log(isSubsequence('abc', 'acb')); // false
+// console.log(isSubsequence('sing', 'sting')); // true
+// console.log(isSubsequence('abc', 'abracadabra')); // true
+// console.log(isSubsequence('abc', 'acb')); // false
