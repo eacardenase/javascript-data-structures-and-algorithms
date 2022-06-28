@@ -70,6 +70,34 @@ function factorialLoop(num) {
     return total;
 }
 
-console.log(factorial(15));
-console.log(factorialNumber(15));
-console.log(factorialLoop(15));
+// console.log(factorial(15));
+// console.log(factorialNumber(15));
+// console.log(factorialLoop(15));
+
+/**
+ *
+ * @param {number[]} arr
+ * @return {number[]}
+ *
+ */
+function collectOdds(arr) {
+    let odds = [];
+
+    function helper(helperArray) {
+        if (helperArray.length === 0) {
+            return;
+        }
+
+        if (helperArray[0] % 2 !== 0) {
+            odds.push(helperArray[0]);
+        }
+
+        return helper(helperArray.slice(1));
+    }
+
+    helper(arr);
+
+    return odds;
+}
+
+console.log(collectOdds([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]));
