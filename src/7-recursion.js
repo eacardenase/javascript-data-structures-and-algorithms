@@ -36,9 +36,7 @@ function sumRange(num) {
  * @return {number}
  */
 function factorial(num) {
-    if (num === 1) {
-        return 1;
-    }
+    if (num <= 1) return 1;
     return num * factorial(num - 1);
 }
 
@@ -139,9 +137,14 @@ function power(base, exp) {
     return base * power(base, exp - 1);
 }
 
-console.log(power(2, 0)); // 1
-console.log(power(2, 2)); // 4
-console.log(power(2, 4)); // 16
-console.log(power(2, 5)); // 32
-console.log(power(2, 6)); // 64
-console.log(power(2, 7)); // 128
+// console.log(power(2, 0)); // 1
+// console.log(power(2, 2)); // 4
+// console.log(power(2, 4)); // 16
+// console.log(power(2, 5)); // 32
+// console.log(power(2, 6)); // 64
+// console.log(power(2, 7)); // 128
+console.log(factorial(0));
+console.log(factorial(1));
+console.log(factorial(2));
+console.log(factorial(4));
+console.log(factorial(7));
