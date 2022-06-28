@@ -123,4 +123,25 @@ function collectOddValues(arr) {
     return newArr;
 }
 
-console.log(collectOddValues([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]));
+// console.log(collectOddValues([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]));
+
+/**
+ *
+ * @param {number} base
+ * @param {number} exp
+ * @return {number}
+ */
+function power(base, exp) {
+    if (exp === 0) {
+        return 1;
+    }
+
+    return base * power(base, exp - 1);
+}
+
+console.log(power(2, 0)); // 1
+console.log(power(2, 2)); // 4
+console.log(power(2, 4)); // 16
+console.log(power(2, 5)); // 32
+console.log(power(2, 6)); // 64
+console.log(power(2, 7)); // 128
