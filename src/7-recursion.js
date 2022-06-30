@@ -190,6 +190,22 @@ function productOfArray(array) {
     return result * productOfArray(array.slice(1));
 }
 
-console.log(productOfArray([1, 2, 3])); // 6
-console.log(productOfArray([1, 2, 3, 10])); // 60
-console.log(productOfArray([1, 2, 3, 4, 5])); // 120
+// console.log(productOfArray([1, 2, 3])); // 6
+// console.log(productOfArray([1, 2, 3, 10])); // 60
+// console.log(productOfArray([1, 2, 3, 4, 5])); // 120
+
+/**
+ *
+ * @param {number} num
+ * @returns {numer}
+ */
+function recursiveRange(num) {
+    if (num <= 1) {
+        return 1;
+    }
+
+    return num + recursiveRange(num - 1);
+}
+
+console.log(recursiveRange(6)); // 21
+console.log(recursiveRange(10)); // 55
