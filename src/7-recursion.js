@@ -207,5 +207,36 @@ function recursiveRange(num) {
     return num + recursiveRange(num - 1);
 }
 
-console.log(recursiveRange(6)); // 21
-console.log(recursiveRange(10)); // 55
+// console.log(recursiveRange(6)); // 21
+// console.log(recursiveRange(10)); // 55
+
+/**
+ *
+ * @param {number} num
+ * @returns {number}
+ */
+function fib(num) {
+    let fibonachiSeq = [1, 1];
+
+    function helper(helperArray) {
+        if (num === helperArray.length - 1) {
+            return;
+        }
+
+        helperArray.push(
+            helperArray[helperArray.length - 1] +
+                helperArray[helperArray.length - 2]
+        );
+
+        return helper(helperArray);
+    }
+
+    helper(fibonachiSeq);
+
+    return fibonachiSeq[num - 1];
+}
+
+console.log(fib(4)); // 3
+console.log(fib(10)); // 55
+console.log(fib(28)); // 317811
+console.log(fib(35)); // 9227465
