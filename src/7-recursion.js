@@ -179,20 +179,16 @@ function power(base, exp) {
  * @returns {number}
  */
 function productOfArray(array) {
-    let result = 1;
-
     if (array.length === 0) {
-        return result;
+        return 1;
     }
 
-    result *= array[0];
-
-    return result * productOfArray(array.slice(1));
+    return array[0] * productOfArray(array.slice(1));
 }
 
-// console.log(productOfArray([1, 2, 3])); // 6
-// console.log(productOfArray([1, 2, 3, 10])); // 60
-// console.log(productOfArray([1, 2, 3, 4, 5])); // 120
+console.log(productOfArray([1, 2, 3])); // 6
+console.log(productOfArray([1, 2, 3, 10])); // 60
+console.log(productOfArray([1, 2, 3, 4, 5])); // 120
 
 /**
  *
@@ -236,7 +232,7 @@ function fib(num) {
     return fibonachiSeq[num - 1];
 }
 
-console.log(fib(4)); // 3
-console.log(fib(10)); // 55
-console.log(fib(28)); // 317811
-console.log(fib(35)); // 9227465
+// console.log(fib(4)); // 3
+// console.log(fib(10)); // 55
+// console.log(fib(28)); // 317811
+// console.log(fib(35)); // 9227465
