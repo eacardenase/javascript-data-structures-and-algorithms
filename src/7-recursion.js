@@ -186,14 +186,14 @@ function productOfArray(array) {
     return array[0] * productOfArray(array.slice(1));
 }
 
-console.log(productOfArray([1, 2, 3])); // 6
-console.log(productOfArray([1, 2, 3, 10])); // 60
-console.log(productOfArray([1, 2, 3, 4, 5])); // 120
+// console.log(productOfArray([1, 2, 3])); // 6
+// console.log(productOfArray([1, 2, 3, 10])); // 60
+// console.log(productOfArray([1, 2, 3, 4, 5])); // 120
 
 /**
  *
  * @param {number} num
- * @returns {numer}
+ * @returns {number}
  */
 function recursiveRange(num) {
     if (num <= 1) {
@@ -212,27 +212,14 @@ function recursiveRange(num) {
  * @returns {number}
  */
 function fib(num) {
-    let fibonachiSeq = [1, 1];
-
-    function helper(helperArray) {
-        if (num === helperArray.length - 1) {
-            return;
-        }
-
-        helperArray.push(
-            helperArray[helperArray.length - 1] +
-                helperArray[helperArray.length - 2]
-        );
-
-        return helper(helperArray);
+    if (num <= 2) {
+        return 1;
     }
 
-    helper(fibonachiSeq);
-
-    return fibonachiSeq[num - 1];
+    return fib(num - 1) + fib(num - 2);
 }
 
-// console.log(fib(4)); // 3
-// console.log(fib(10)); // 55
-// console.log(fib(28)); // 317811
-// console.log(fib(35)); // 9227465
+console.log(fib(4)); // 3
+console.log(fib(10)); // 55
+console.log(fib(28)); // 317811
+console.log(fib(35)); // 9227465
