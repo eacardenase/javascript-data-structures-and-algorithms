@@ -143,8 +143,35 @@ function power(base, exp) {
 // console.log(power(2, 5)); // 32
 // console.log(power(2, 6)); // 64
 // console.log(power(2, 7)); // 128
-console.log(factorial(0));
-console.log(factorial(1));
-console.log(factorial(2));
-console.log(factorial(4));
-console.log(factorial(7));
+
+// console.log(factorial(0));
+// console.log(factorial(1));
+// console.log(factorial(2));
+// console.log(factorial(4));
+// console.log(factorial(7));
+
+/**
+ *
+ * @param {number[]} array
+ * @return {number}
+ */
+function productOfArray(array) {
+    let result = 1;
+
+    function helper(helperArray) {
+        if (helperArray.length === 0) {
+            return;
+        }
+
+        result *= helperArray[0];
+
+        return helper(helperArray.slice(1));
+    }
+
+    helper(array);
+
+    return result;
+}
+
+console.log(productOfArray([1, 2, 3])); // 6
+console.log(productOfArray([1, 2, 3, 10])); // 60
