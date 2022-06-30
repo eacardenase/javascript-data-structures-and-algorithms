@@ -1,7 +1,7 @@
 /**
  * @param {number[]} sortedArray
  * @param {number} num
- * @return {number}
+ * @returns {number}
  */
 
 function search(sortedArray, num) {

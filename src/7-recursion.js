@@ -1,7 +1,7 @@
 /**
  *
  * @param {number} num
- * @return {void}
+ * @returns {void}
  */
 function countDown(num) {
     if (num <= 0) {
@@ -18,7 +18,7 @@ function countDown(num) {
 /**
  *
  * @param {number} num
- * @return {number}
+ * @returns {number}
  */
 function sumRange(num) {
     if (num === 1) {
@@ -33,7 +33,7 @@ function sumRange(num) {
 /**
  *
  * @param {number} num
- * @return {number}
+ * @returns {number}
  */
 function factorial(num) {
     if (num <= 1) return 1;
@@ -43,7 +43,7 @@ function factorial(num) {
 /**
  *
  * @param {number} num
- * @return {number}
+ * @returns {number}
  */
 function factorialNumber(num) {
     var factorial = num;
@@ -56,7 +56,7 @@ function factorialNumber(num) {
 /**
  *
  * @param {number} num
- * @return {number}
+ * @returns {number}
  */
 function factorialLoop(num) {
     let total = 1;
@@ -75,7 +75,7 @@ function factorialLoop(num) {
 /**
  *
  * @param {number[]} arr
- * @return {number[]}
+ * @returns {number[]}
  *
  */
 function collectOdds(arr) {
@@ -103,7 +103,7 @@ function collectOdds(arr) {
 /**
  *
  * @param {number[]} arr
- * @return {number[]}
+ * @returns {number[]}
  */
 function collectOddValues(arr) {
     let newArr = [];
@@ -127,7 +127,7 @@ function collectOddValues(arr) {
  *
  * @param {number} base
  * @param {number} exp
- * @return {number}
+ * @returns {number}
  */
 function power(base, exp) {
     if (exp === 0) {
@@ -150,28 +150,46 @@ function power(base, exp) {
 // console.log(factorial(4));
 // console.log(factorial(7));
 
+// /**
+//  *
+//  * @param {number[]} array
+//  * @returns {number}
+//  */
+// function productOfArray(array) {
+//     let result = 1;
+
+//     function helper(helperArray) {
+//         if (helperArray.length === 0) {
+//             return;
+//         }
+
+//         result *= helperArray[0];
+
+//         return helper(helperArray.slice(1));
+//     }
+
+//     helper(array);
+
+//     return result;
+// }
+
 /**
  *
  * @param {number[]} array
- * @return {number}
+ * @returns {number}
  */
 function productOfArray(array) {
     let result = 1;
 
-    function helper(helperArray) {
-        if (helperArray.length === 0) {
-            return;
-        }
-
-        result *= helperArray[0];
-
-        return helper(helperArray.slice(1));
+    if (array.length === 0) {
+        return result;
     }
 
-    helper(array);
+    result *= array[0];
 
-    return result;
+    return result * productOfArray(array.slice(1));
 }
 
 console.log(productOfArray([1, 2, 3])); // 6
 console.log(productOfArray([1, 2, 3, 10])); // 60
+console.log(productOfArray([1, 2, 3, 4, 5])); // 120

@@ -31,7 +31,7 @@ function maxSubarraySum(array, num) {
  *
  * @param {number[]} array
  * @param {number} window
- * @return {number}
+ * @returns {number}
  */
 function maxSubarraySum(array, window) {
     if (array.length < window) {
@@ -67,7 +67,7 @@ function maxSubarraySum(array, window) {
  *
  * @param {number[]} array
  * @param {number} window
- * @return {number}
+ * @returns {number}
  */
 function minSubArrayLen(array, target) {
     let total = 0;
@@ -102,7 +102,7 @@ function minSubArrayLen(array, target) {
 /**
  *
  * @param {string} word
- * @return {number}
+ * @returns {number}
  */
 function findLongestSubstring(word) {
     let longest = 0;

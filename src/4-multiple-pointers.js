@@ -98,7 +98,7 @@ function countUniqueValues(arr) {
 /**
  *
  * @param  {...any} args
- * @return {boolean}
+ * @returns {boolean}
  */
 
 function areThereDuplicates(...args) {
@@ -130,7 +130,7 @@ function areThereDuplicates(...args) {
  *
  * @param {number[]} array
  * @param {number} average
- * @return {boolean}
+ * @returns {boolean}
  */
 function averagePair(array, average) {
     let left = 0;
@@ -160,7 +160,7 @@ function averagePair(array, average) {
  *
  * @param {string} str1
  * @param {string} str2
- * @return {boolean}
+ * @returns {boolean}
  */
 function isSubsequence(str1, str2) {
     let left = 0;

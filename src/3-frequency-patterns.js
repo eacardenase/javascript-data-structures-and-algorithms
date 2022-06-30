@@ -86,7 +86,7 @@ function validAnagram(first, second) {
 /**
  * @param {number} num1
  * @param {number} num2
- * @return {boolean}
+ * @returns {boolean}
  */
 function sameFrequency(num1, num2) {
     const number1 = num1.toString();
@@ -121,7 +121,7 @@ function sameFrequency(num1, num2) {
 /**
  *
  * @param  {...any} args
- * @return {boolean}
+ * @returns {boolean}
  */
 
 function areThereDuplicates(...args) {
