@@ -483,7 +483,48 @@ let obj = {
     },
 };
 
-console.log(stringifyNumbers(obj));
+// console.log(stringifyNumbers(obj));
+
+/**
+ *
+ * @param {Object} obj
+ * @returns {string[]}
+ */
+function collectStrings(obj) {
+    let newArray = [];
+
+    function helper(helperObj) {
+        for (let key in helperObj) {
+            if (typeof helperObj[key] === 'object') {
+                helper(helperObj[key]);
+            } else if (typeof helperObj[key] === 'string') {
+                newArray.push(helperObj[key]);
+            }
+        }
+    }
+
+    helper(obj);
+
+    return newArray;
+}
+
+const obj3 = {
+    stuff: 'foo',
+    data: {
+        val: {
+            thing: {
+                info: 'bar',
+                moreInfo: {
+                    evenMoreInfo: {
+                        weMadeIt: 'baz',
+                    },
+                },
+            },
+        },
+    },
+};
+
+console.log(collectStrings(obj3)); // ["foo", "bar", "baz"])
 
 /**
  *
