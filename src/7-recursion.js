@@ -1,3 +1,5 @@
+//@ts-check
+
 /**
  *
  * @param {number} num
@@ -268,5 +270,35 @@ function reverse(str) {
     return reversedString.concat(reverse(str.slice(0, str.length - 1)));
 }
 
-console.log(reverse('awesome')); // 'emosewa'
-console.log(reverse('rithmschool')); // 'loohcsmhtir'
+// console.log(reverse('awesome')); // 'emosewa'
+// console.log(reverse('rithmschool')); // 'loohcsmhtir'
+
+// SAMPLE INPUT / OUTPUT
+const isOdd = (val) => val % 2 !== 0;
+
+/**
+ *
+ * @param {number[]} arr
+ * @param {Function} cb
+ * @returns {boolean}
+ */
+function someRecursive(arr, cb) {
+    let flag = false;
+
+    if (arr.length === 0) {
+        return flag;
+    }
+
+    flag = cb(arr[0]);
+
+    if (flag) {
+        return true;
+    }
+
+    return someRecursive(arr.slice(1), cb);
+}
+
+console.log(someRecursive([1, 2, 3, 4], isOdd)); // true
+console.log(someRecursive([4, 6, 8, 9], isOdd)); // true
+console.log(someRecursive([4, 6, 8], isOdd)); // false
+console.log(someRecursive([4, 6, 8], (val) => val > 10)); // false
