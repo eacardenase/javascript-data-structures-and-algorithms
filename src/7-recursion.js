@@ -283,8 +283,8 @@ function reverse(str) {
     return reverse(str.slice(1)) + str[0];
 }
 
-console.log(reverse('awesome')); // 'emosewa'
-console.log(reverse('rithmschool')); // 'loohcsmhtir'
+// console.log(reverse('awesome')); // 'emosewa'
+// console.log(reverse('rithmschool')); // 'loohcsmhtir'
 
 // SAMPLE INPUT / OUTPUT
 const isOdd = (val) => val % 2 !== 0;
@@ -421,6 +421,25 @@ function capitalizeWords(strArray) {
 let words = ['i', 'am', 'learning', 'recursion'];
 // console.log(capitalizeWords(words)); // ['I', 'AM', 'LEARNING', 'RECURSION']
 
+// /**
+//  *
+//  * @param {string} str
+//  * @returns {boolean}
+//  */
+// function isPalindrome(str) {
+//     if (str.length === 1) {
+//         return true;
+//     }
+
+//     let flag = str[0] === str[str.length - 1];
+
+//     if (!flag) {
+//         return false;
+//     }
+
+//     return isPalindrome(str.slice(1, str.length - 1));
+// }
+
 /**
  *
  * @param {string} str
@@ -430,14 +449,13 @@ function isPalindrome(str) {
     if (str.length === 1) {
         return true;
     }
-
-    let flag = str[0] === str[str.length - 1];
-
-    if (!flag) {
-        return false;
+    if (str.length === 2) {
+        return str[0] === str[1];
     }
-
-    return isPalindrome(str.slice(1, str.length - 1));
+    if (str[0] === str.slice(-1)) {
+        return isPalindrome(str.slice(1, -1));
+    }
+    return false;
 }
 
 // console.log(isPalindrome('awesome')); // false
