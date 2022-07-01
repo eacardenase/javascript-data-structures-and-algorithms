@@ -219,7 +219,37 @@ function fib(num) {
     return fib(num - 1) + fib(num - 2);
 }
 
-console.log(fib(4)); // 3
-console.log(fib(10)); // 55
-console.log(fib(28)); // 317811
-console.log(fib(35)); // 9227465
+// console.log(fib(4)); // 3
+// console.log(fib(10)); // 55
+// console.log(fib(28)); // 317811
+// console.log(fib(35)); // 9227465
+
+/**
+ *
+ * @param {string} str Input string
+ * @returns {string} String reversed
+ */
+function reverse(str) {
+    let reversedString = '';
+
+    /**
+     *
+     * @param {string} helperStr
+     */
+    function helper(helperStr) {
+        if (helperStr.length === 0) {
+            return;
+        }
+
+        reversedString += helperStr.slice(helperStr.length - 1);
+
+        return helper(helperStr.slice(0, helperStr.length - 1));
+    }
+
+    helper(str);
+
+    return reversedString;
+}
+
+console.log(reverse('awesome')); // 'emosewa'
+console.log(reverse('rithmschools')); // 'loohcsmhtir'
