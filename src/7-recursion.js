@@ -424,8 +424,45 @@ var obj2 = {
     e: { e: { e: 2 }, ee: 'car' },
 };
 
-console.log(nestedEvenSum(obj1)); // 6
-console.log(nestedEvenSum(obj2)); // 10
+// console.log(nestedEvenSum(obj1)); // 6
+// console.log(nestedEvenSum(obj2)); // 10
+
+/**
+ *
+ * @param {Object} initialObj
+ * @returns {Object}
+ */
+function stringifyNumbers(initialObj) {
+    const finalObj = Object.assign({}, initialObj);
+
+    function helper(helperObj) {
+        for (let key in helperObj) {
+            if (typeof helperObj[key] === 'object') {
+                helper(helperObj[key]);
+            } else if (typeof helperObj[key] === 'number') {
+                helperObj[key] = `${helperObj[key]}`;
+            }
+        }
+    }
+
+    helper(finalObj);
+
+    return finalObj;
+}
+
+let obj = {
+    num: 1,
+    test: [],
+    data: {
+        val: 4,
+        info: {
+            isRight: true,
+            random: 66,
+        },
+    },
+};
+
+console.log(stringifyNumbers(obj));
 
 /**
  *
