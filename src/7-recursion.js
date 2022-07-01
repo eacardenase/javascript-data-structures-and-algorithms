@@ -356,32 +356,32 @@ function capitalizeFirst(arr) {
 
 // console.log(capitalizeFirst(['car', 'taco', 'banana'])); // ['Car','Taco','Banana']
 
-/**
- *
- * @param {Object} obj
- * @returns {number}
- */
-function nestedEvenSum(obj) {}
+// /**
+//  *
+//  * @param {Object} obj
+//  * @returns {number}
+//  */
+// function nestedEvenSum(obj) {}
 
-var obj1 = {
-    outer: 2,
-    obj: {
-        inner: 2,
-        otherObj: {
-            superInner: 2,
-            notANumber: true,
-            alsoNotANumber: 'yup',
-        },
-    },
-};
+// var obj1 = {
+//     outer: 2,
+//     obj: {
+//         inner: 2,
+//         otherObj: {
+//             superInner: 2,
+//             notANumber: true,
+//             alsoNotANumber: 'yup',
+//         },
+//     },
+// };
 
-var obj2 = {
-    a: 2,
-    b: { b: 2, bb: { b: 3, bb: { b: 2 } } },
-    c: { c: { c: 2 }, cc: 'ball', ccc: 5 },
-    d: 1,
-    e: { e: { e: 2 }, ee: 'car' },
-};
+// var obj2 = {
+//     a: 2,
+//     b: { b: 2, bb: { b: 3, bb: { b: 2 } } },
+//     c: { c: { c: 2 }, cc: 'ball', ccc: 5 },
+//     d: 1,
+//     e: { e: { e: 2 }, ee: 'car' },
+// };
 
 // console.log(nestedEvenSum(obj1)); // 6
 // console.log(nestedEvenSum(obj2)); // 10
@@ -406,4 +406,29 @@ function capitalizeWords(strArray) {
 }
 
 let words = ['i', 'am', 'learning', 'recursion'];
-console.log(capitalizeWords(words)); // ['I', 'AM', 'LEARNING', 'RECURSION']
+// console.log(capitalizeWords(words)); // ['I', 'AM', 'LEARNING', 'RECURSION']
+
+/**
+ *
+ * @param {string} str
+ * @returns {boolean}
+ */
+function isPalindrome(str) {
+    if (str.length === 1) {
+        return true;
+    }
+
+    let flag = str[0] === str[str.length - 1];
+
+    if (!flag) {
+        return false;
+    }
+
+    return isPalindrome(str.slice(1, str.length - 1));
+}
+
+console.log(isPalindrome('awesome')); // false
+console.log(isPalindrome('foobar')); // false
+console.log(isPalindrome('tacocat')); // true
+console.log(isPalindrome('amanaplanacanalpanama')); // true
+console.log(isPalindrome('amanaplanacanalpandemonium')); // false
