@@ -427,27 +427,48 @@ var obj2 = {
 // console.log(nestedEvenSum(obj1)); // 6
 // console.log(nestedEvenSum(obj2)); // 10
 
+// /**
+//  *
+//  * @param {Object} initialObj
+//  * @returns {Object}
+//  */
+// function stringifyNumbers(initialObj) {
+//     const finalObj = Object.assign({}, initialObj);
+
+//     function helper(helperObj) {
+//         for (let key in helperObj) {
+//             if (typeof helperObj[key] === 'object') {
+//                 helper(helperObj[key]);
+//             } else if (typeof helperObj[key] === 'number') {
+//                 helperObj[key] = `${helperObj[key]}`;
+//             }
+//         }
+//     }
+
+//     helper(finalObj);
+
+//     return finalObj;
+// }
+
 /**
  *
- * @param {Object} initialObj
+ * @param {Object} obj
  * @returns {Object}
  */
-function stringifyNumbers(initialObj) {
-    const finalObj = Object.assign({}, initialObj);
+function stringifyNumbers(obj) {
+    const newObj = {};
 
-    function helper(helperObj) {
-        for (let key in helperObj) {
-            if (typeof helperObj[key] === 'object') {
-                helper(helperObj[key]);
-            } else if (typeof helperObj[key] === 'number') {
-                helperObj[key] = `${helperObj[key]}`;
-            }
+    for (let key in obj) {
+        if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+            newObj[key] = stringifyNumbers(obj[key]);
+        } else if (typeof obj[key] === 'number') {
+            newObj[key] = `${obj[key]}`;
+        } else {
+            newObj[key] = obj[key];
         }
     }
 
-    helper(finalObj);
-
-    return finalObj;
+    return newObj;
 }
 
 let obj = {
