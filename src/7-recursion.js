@@ -224,32 +224,49 @@ function fib(num) {
 // console.log(fib(28)); // 317811
 // console.log(fib(35)); // 9227465
 
+// /**
+//  *
+//  * @param {string} str Input string
+//  * @returns {string} String reversed
+//  */
+// function reverse(str) {
+//     let reversedString = '';
+
+//     /**
+//      *
+//      * @param {string} helperStr
+//      */
+//     function helper(helperStr) {
+//         if (helperStr.length === 0) {
+//             return;
+//         }
+
+//         reversedString += helperStr.slice(helperStr.length - 1);
+
+//         return helper(helperStr.slice(0, helperStr.length - 1));
+//     }
+
+//     helper(str);
+
+//     return reversedString;
+// }
+
 /**
  *
  * @param {string} str Input string
  * @returns {string} String reversed
  */
 function reverse(str) {
-    let reversedString = '';
-
-    /**
-     *
-     * @param {string} helperStr
-     */
-    function helper(helperStr) {
-        if (helperStr.length === 0) {
-            return;
-        }
-
-        reversedString += helperStr.slice(helperStr.length - 1);
-
-        return helper(helperStr.slice(0, helperStr.length - 1));
+    if (str.length === 0) {
+        return '';
     }
 
-    helper(str);
+    let reversedString = '';
 
-    return reversedString;
+    reversedString += str.slice(str.length - 1);
+
+    return reversedString.concat(reverse(str.slice(0, str.length - 1)));
 }
 
 console.log(reverse('awesome')); // 'emosewa'
-console.log(reverse('rithmschools')); // 'loohcsmhtir'
+console.log(reverse('rithmschool')); // 'loohcsmhtir'
