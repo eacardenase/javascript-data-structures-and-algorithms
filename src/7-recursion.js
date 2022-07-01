@@ -253,25 +253,38 @@ function fib(num) {
 //     return reversedString;
 // }
 
+// /**
+//  *
+//  * @param {string} str Input string
+//  * @returns {string} String reversed
+//  */
+// function reverse(str) {
+//     if (str.length === 0) {
+//         return '';
+//     }
+
+//     let reversedString = '';
+
+//     reversedString += str.slice(str.length - 1);
+
+//     return reversedString.concat(reverse(str.slice(0, str.length - 1)));
+// }
+
 /**
  *
  * @param {string} str Input string
  * @returns {string} String reversed
  */
 function reverse(str) {
-    if (str.length === 0) {
-        return '';
+    if (str.length <= 1) {
+        return str;
     }
 
-    let reversedString = '';
-
-    reversedString += str.slice(str.length - 1);
-
-    return reversedString.concat(reverse(str.slice(0, str.length - 1)));
+    return reverse(str.slice(1)) + str[0];
 }
 
-// console.log(reverse('awesome')); // 'emosewa'
-// console.log(reverse('rithmschool')); // 'loohcsmhtir'
+console.log(reverse('awesome')); // 'emosewa'
+console.log(reverse('rithmschool')); // 'loohcsmhtir'
 
 // SAMPLE INPUT / OUTPUT
 const isOdd = (val) => val % 2 !== 0;
@@ -427,8 +440,8 @@ function isPalindrome(str) {
     return isPalindrome(str.slice(1, str.length - 1));
 }
 
-console.log(isPalindrome('awesome')); // false
-console.log(isPalindrome('foobar')); // false
-console.log(isPalindrome('tacocat')); // true
-console.log(isPalindrome('amanaplanacanalpanama')); // true
-console.log(isPalindrome('amanaplanacanalpandemonium')); // false
+// console.log(isPalindrome('awesome')); // false
+// console.log(isPalindrome('foobar')); // false
+// console.log(isPalindrome('tacocat')); // true
+// console.log(isPalindrome('amanaplanacanalpanama')); // true
+// console.log(isPalindrome('amanaplanacanalpandemonium')); // false
