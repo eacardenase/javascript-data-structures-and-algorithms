@@ -298,7 +298,37 @@ function someRecursive(arr, cb) {
     return someRecursive(arr.slice(1), cb);
 }
 
-console.log(someRecursive([1, 2, 3, 4], isOdd)); // true
-console.log(someRecursive([4, 6, 8, 9], isOdd)); // true
-console.log(someRecursive([4, 6, 8], isOdd)); // false
-console.log(someRecursive([4, 6, 8], (val) => val > 10)); // false
+// console.log(someRecursive([1, 2, 3, 4], isOdd)); // true
+// console.log(someRecursive([4, 6, 8, 9], isOdd)); // true
+// console.log(someRecursive([4, 6, 8], isOdd)); // false
+// console.log(someRecursive([4, 6, 8], (val) => val > 10)); // false
+
+/**
+ *
+ * @param {Array} arr
+ * @returns {Array}
+ */
+function flatten(arr) {
+    let newArray = [];
+
+    if (arr.length === 0) {
+        return newArray;
+    }
+
+    let currentEl = arr[0];
+
+    if (Array.isArray(currentEl)) {
+        currentEl = currentEl.concat(arr.slice(1));
+
+        return flatten(currentEl);
+    }
+
+    newArray.push(currentEl);
+
+    return newArray.concat(flatten(arr.slice(1)));
+}
+
+console.log(flatten([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
+console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]
+console.log(flatten([[1], [2], [3]])); // [1,2,3]
+console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])); // [1,2,3]
