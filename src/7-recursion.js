@@ -328,7 +328,30 @@ function flatten(arr) {
     return newArray.concat(flatten(arr.slice(1)));
 }
 
-console.log(flatten([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
-console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]
-console.log(flatten([[1], [2], [3]])); // [1,2,3]
-console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])); // [1,2,3]
+// console.log(flatten([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
+// console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]
+// console.log(flatten([[1], [2], [3]])); // [1,2,3]
+// console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])); // [1,2,3]
+
+/**
+ *
+ * @param {string[]} arr
+ * @returns {string[]}
+ */
+function capitalizeFirst(arr) {
+    let newArray = [];
+
+    if (arr.length === 0) {
+        return newArray;
+    }
+
+    let currentEl = arr[0];
+
+    currentEl = currentEl[0].toUpperCase() + currentEl.slice(1);
+
+    newArray.push(currentEl);
+
+    return newArray.concat(capitalizeFirst(arr.slice(1)));
+}
+
+console.log(capitalizeFirst(['car', 'taco', 'banana'])); // ['Car','Taco','Banana']
