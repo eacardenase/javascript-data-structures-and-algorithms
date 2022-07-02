@@ -1,1 +1,1 @@
-require('./src/7-recursion');
+require('./src/8-searching-algorithms');
