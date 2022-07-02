@@ -485,6 +485,29 @@ let obj = {
 
 // console.log(stringifyNumbers(obj));
 
+// /**
+//  *
+//  * @param {Object} obj
+//  * @returns {string[]}
+//  */
+// function collectStrings(obj) {
+//     let newArray = [];
+
+//     function helper(helperObj) {
+//         for (let key in helperObj) {
+//             if (typeof helperObj[key] === 'object') {
+//                 helper(helperObj[key]);
+//             } else if (typeof helperObj[key] === 'string') {
+//                 newArray.push(helperObj[key]);
+//             }
+//         }
+//     }
+
+//     helper(obj);
+
+//     return newArray;
+// }
+
 /**
  *
  * @param {Object} obj
@@ -493,17 +516,13 @@ let obj = {
 function collectStrings(obj) {
     let newArray = [];
 
-    function helper(helperObj) {
-        for (let key in helperObj) {
-            if (typeof helperObj[key] === 'object') {
-                helper(helperObj[key]);
-            } else if (typeof helperObj[key] === 'string') {
-                newArray.push(helperObj[key]);
-            }
+    for (let key in obj) {
+        if (typeof obj[key] === 'object') {
+            newArray = newArray.concat(collectStrings(obj[key]));
+        } else if (typeof obj[key] === 'string') {
+            newArray.push(obj[key]);
         }
     }
-
-    helper(obj);
 
     return newArray;
 }
