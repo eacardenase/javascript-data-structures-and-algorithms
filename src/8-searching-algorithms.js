@@ -27,25 +27,29 @@ function linearSearch(numberArr, targetNum) {
  */
 function binarySearch(numberArr, targetNum) {
     let left = 0;
-    let right = numberArr.length;
+    let right = numberArr.length - 1;
 
-    while (left < right) {
+    while (left <= right) {
         let middle = Math.floor((left + right) / 2);
 
         if (numberArr[middle] === targetNum) {
             return middle;
         } else if (numberArr[middle] < targetNum) {
-            left++;
+            left = middle + 1;
         } else {
-            right--;
+            right = middle - 1;
         }
     }
 
     return -1;
 }
 
-console.log(binarySearch([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 5)); // 5
-console.log(
-    binarySearch([0, 0, 0, 1, 2, 3, 3, 3, 4, 5, 5, 5, 6, 7, 7, 8, 9], 4)
-); // 8
-console.log(binarySearch([1, 2, 3, 4, 5], 5)); // 4
+console.log(binarySearch([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 6)); // 6
+console.log(binarySearch([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10)); // -1
+// console.log(
+//     binarySearch([0, 0, 0, 1, 2, 3, 3, 3, 4, 5, 5, 5, 6, 7, 7, 8, 9], 4)
+// ); // 8
+// console.log(
+//     binarySearch([0, 0, 0, 1, 2, 3, 3, 3, 4, 5, 5, 5, 6, 7, 7, 8, 9], 9)
+// ); // 16
+// console.log(binarySearch([1, 2, 3, 4, 5], 5)); // 4
