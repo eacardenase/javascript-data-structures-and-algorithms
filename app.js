@@ -1,1 +1,1 @@
-require('./src/8-searching-algorithms');
+require('./src/9-sorting-algorithms');
