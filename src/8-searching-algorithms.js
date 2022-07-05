@@ -67,10 +67,13 @@ function naiveStrSearch(str1, str2) {
     for (let i = 0; i <= str1.length; i++) {
         if (str1[i] === str2[index]) {
             index++;
+
             if (index === str2.length) {
                 count++;
                 index = 0;
             }
+        } else if (str1[i] === str2[0]) {
+            index = 1;
         } else {
             index = 0;
         }
@@ -80,3 +83,6 @@ function naiveStrSearch(str1, str2) {
 }
 
 console.log(naiveStrSearch('wowomgzomgomg', 'omg'));
+console.log(naiveStrSearch('lorie loled', 'lol'));
+console.log(naiveStrSearch('llallama', 'llama'));
+console.log(naiveStrSearch('anananananananananakin', 'anakin'));
