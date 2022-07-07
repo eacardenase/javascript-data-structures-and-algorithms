@@ -61,6 +61,7 @@ function selectionSort(array) {
                 min = j;
             }
         }
+
         if (array[min] !== array[i]) {
             let temp = array[min];
             array[min] = array[i];
@@ -71,5 +72,30 @@ function selectionSort(array) {
     return array;
 }
 
-console.log(selectionSort([19, 44, 38, 5, 47, 15])); // [5, 15, 19, 38, 44, 47]
-console.log(selectionSort([5, 3, 4, 1, 2])); // [1, 2, 3, 4, 5]
+// console.log(selectionSort([19, 44, 38, 5, 47, 15])); // [5, 15, 19, 38, 44, 47]
+// console.log(selectionSort([5, 3, 4, 1, 2])); // [1, 2, 3, 4, 5]
+// console.log(selectionSort([0, 2, 2, 34, 22, 10, 19, 17]));
+
+/**
+ *
+ * @param {Array} array
+ * @returns {Array}
+ */
+function insertionSort(array) {
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] < array[i - 1]) {
+            for (let j = i; j > 0; j--) {
+                if (array[j] < array[j - 1]) {
+                    let temp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = temp;
+                }
+            }
+        }
+    }
+
+    return array;
+}
+
+console.log(insertionSort([3, 44, 38, 5, 47, 15]));
+console.log(insertionSort([2, 1, 9, 76, 4]));
