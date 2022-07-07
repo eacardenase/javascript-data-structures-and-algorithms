@@ -45,4 +45,31 @@ function bubbleSort(array) {
 
 // console.log(bubbleSort([29, 10, 14, 30, 37, 14, 18])); // [10, 14, 14, 18, 29, 30, 37]
 // console.log(bubbleSort([37, 45, 29, 8, 12, 88, -3])); // [-3, 8, 12, 29, 37, 45, 88]
-console.log(bubbleSort([8, 1, 2, 3, 4, 5, 6, 7]));
+// console.log(bubbleSort([8, 1, 2, 3, 4, 5, 6, 7]));
+
+/**
+ *
+ * @param {Array} array
+ * @returns {Array}
+ */
+function selectionSort(array) {
+    for (let i = 0; i < array.length; i++) {
+        let min = i;
+
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[j] < array[min]) {
+                min = j;
+            }
+        }
+        if (array[min] !== array[i]) {
+            let temp = array[min];
+            array[min] = array[i];
+            array[i] = temp;
+        }
+    }
+
+    return array;
+}
+
+console.log(selectionSort([19, 44, 38, 5, 47, 15])); // [5, 15, 19, 38, 44, 47]
+console.log(selectionSort([5, 3, 4, 1, 2])); // [1, 2, 3, 4, 5]
