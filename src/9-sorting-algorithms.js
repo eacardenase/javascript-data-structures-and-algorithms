@@ -149,12 +149,13 @@ function mergeSort(array) {
     }
 
     let middle = Math.floor(array.length / 2);
-    let arr1 = array.slice(0, middle);
-    let arr2 = array.slice(middle);
+    let arr1 = mergeSort(array.slice(0, middle));
+    let arr2 = mergeSort(array.slice(middle));
 
-    return mergeSortedArrays(mergeSort(arr1), mergeSort(arr2));
+    return mergeSortedArrays(arr1, arr2);
 }
 
-console.log(mergeSort([1, 10, 50, 2, 14, 99, 100])); // [1, 2, 10, 14, 50, 99, 100]
-console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2])); // [1, 2, 3, 4, 5, 6, 7, 8]
-console.log(mergeSort([3, 44, 38, 5, 47, 15, 36, 26])); // [3, 5, 15, 26, 36, 38, 44, 47]
+// console.log(mergeSort([1, 10, 50, 2, 14, 99, 100])); // [1, 2, 10, 14, 50, 99, 100]
+// console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2])); // [1, 2, 3, 4, 5, 6, 7, 8]
+// console.log(mergeSort([3, 44, 38, 5, 47, 15, 36, 26])); // [3, 5, 15, 26, 36, 38, 44, 47]
+console.log(mergeSort([19, 44, 38, 5, 47, 15])); // [5, 15, 19, 38, 44, 47]
