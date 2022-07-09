@@ -133,4 +133,28 @@ function mergeSortedArrays(arr1, arr2) {
     return sortedArray;
 }
 
-console.log(mergeSortedArrays([1, 10, 50], [2, 14, 99, 100])); // [1, 2, 10, 14, 50, 99, 100]
+// console.log(mergeSortedArrays([1, 10, 50], [2, 14, 99, 100])); // [1, 2, 10, 14, 50, 99, 100]
+// console.log(mergeSortedArrays([], [1, 3])); // [1, 3]
+// console.log(mergeSortedArrays([1, 3], [])); // [1, 3]
+// console.log(mergeSortedArrays([100], [1, 2, 3, 4, 5, 6])); // [1, 2, 3, 4, 5, 6, 100]
+
+/**
+ *
+ * @param {Array} array
+ * @returns {Array}
+ */
+function mergeSort(array) {
+    if (array.length <= 1) {
+        return array;
+    }
+
+    let middle = Math.floor(array.length / 2);
+    let arr1 = array.slice(0, middle);
+    let arr2 = array.slice(middle);
+
+    return mergeSortedArrays(mergeSort(arr1), mergeSort(arr2));
+}
+
+console.log(mergeSort([1, 10, 50, 2, 14, 99, 100])); // [1, 2, 10, 14, 50, 99, 100]
+console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2])); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(mergeSort([3, 44, 38, 5, 47, 15, 36, 26])); // [3, 5, 15, 26, 36, 38, 44, 47]
