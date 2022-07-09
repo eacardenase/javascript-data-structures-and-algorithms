@@ -19,18 +19,17 @@ function swap(arr, idx1, idx2) {
  * @returns {Array}
  */
 function bubbleSort(array) {
-    const sortedArray = [...array];
-    let end = sortedArray.length - 1;
+    let end = array.length - 1;
     let noSwaps = false;
 
     for (let i = end; i >= 0; i--) {
         noSwaps = true;
 
         for (let j = 0; j <= i - 1; j++) {
-            if (sortedArray[j] > sortedArray[j + 1]) {
-                let temp = sortedArray[j];
-                sortedArray[j] = sortedArray[j + 1];
-                sortedArray[j + 1] = temp;
+            if (array[j] > array[j + 1]) {
+                let temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
                 noSwaps = false;
             }
         }
@@ -40,7 +39,7 @@ function bubbleSort(array) {
         }
     }
 
-    return sortedArray;
+    return array;
 }
 
 // console.log(bubbleSort([29, 10, 14, 30, 37, 14, 18])); // [10, 14, 14, 18, 29, 30, 37]
@@ -97,5 +96,41 @@ function insertionSort(array) {
     return array;
 }
 
-console.log(insertionSort([3, 44, 38, 5, 47, 15]));
-console.log(insertionSort([2, 1, 9, 76, 4]));
+// console.log(insertionSort([3, 44, 38, 5, 47, 15]));
+// console.log(insertionSort([2, 1, 9, 76, 4]));
+
+/**
+ *
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @returns {number[]}
+ */
+function mergeSortedArrays(arr1, arr2) {
+    let sortedArray = [];
+    let i = 0;
+    let j = 0;
+
+    while (true) {
+        if (arr1[i] < arr2[j]) {
+            sortedArray.push(arr1[i]);
+            i++;
+        } else if (arr1[i] > arr2[j]) {
+            sortedArray.push(arr2[j]);
+            j++;
+        }
+
+        if (i === arr1.length) {
+            sortedArray = sortedArray.concat(arr2.slice(j));
+            break;
+        }
+
+        if (j === arr2.length) {
+            sortedArray = sortedArray.concat(arr1.slice(i));
+            break;
+        }
+    }
+
+    return sortedArray;
+}
+
+console.log(mergeSortedArrays([1, 10, 50], [2, 14, 99, 100])); // [1, 2, 10, 14, 50, 99, 100]
