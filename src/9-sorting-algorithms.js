@@ -184,14 +184,15 @@ function pivotHelper(array) {
         array[counter] = temp;
     }
 
-    console.log(array);
-
     return counter;
 }
 
 // console.log(pivotHelper([5, 2, 1, 8, 4, 7, 6, 3])); // 4
 // console.log(pivotHelper([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18])); // 6
 // console.log(pivotHelper([26, 23, 27, 44, 17, 47, 39, 42, 43, 1])); // 3
+// console.log(pivotHelper([4, 8, 2, 1, 5, 7, 6, 3])); // 3
+// console.log(pivotHelper([9, 4, 8, 2, 1, 5, 7, 6, 3])); // 8
+
 
 /**
  * 
@@ -203,9 +204,18 @@ function quickSort(array) {
         return array;
     }
 
-    return array;
+    const pivotIdx = pivotHelper(array);
+
+    const left = quickSort(array.slice(0, pivotIdx));
+    const right = quickSort(array.slice(pivotIdx + 1));
+
+    return left.concat(array[pivotIdx]).concat(right);
 } 
 
-// console.log(quickSort([5, 2, 1, 8, 4, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8]
-// console.log(quickSort([11, 40, 40, 50, 43, 10, 30, 42, 20, 6, 19, 32, 20, 41, 23, 27])); // []
+console.log(quickSort([5, 2, 1, 8, 4, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(quickSort([11, 40, 40, 50, 43, 10, 30, 42, 20, 6, 19, 32, 20, 41, 23, 27])); // [6, 10, 11, 19, 20, 20, 23, 27, 30, 32, 40, 40, 41, 42, 43, 50]
+console.log(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18])); // [1, 4, 11, 14, 16, 18, 28, 36, 37, 40, 41, 42]
+console.log(quickSort([26, 23, 27, 44, 17, 47, 39, 42, 43, 1])); // [1, 17, 23, 26, 27, 39, 42, 43, 44, 47]
+console.log(quickSort([4, 8, 2, 1, 5, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(quickSort([9, 4, 8, 2, 1, 5, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
