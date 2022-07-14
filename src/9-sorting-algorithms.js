@@ -158,4 +158,54 @@ function mergeSort(array) {
 // console.log(mergeSort([1, 10, 50, 2, 14, 99, 100])); // [1, 2, 10, 14, 50, 99, 100]
 // console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2])); // [1, 2, 3, 4, 5, 6, 7, 8]
 // console.log(mergeSort([3, 44, 38, 5, 47, 15, 36, 26])); // [3, 5, 15, 26, 36, 38, 44, 47]
-console.log(mergeSort([19, 44, 38, 5, 47, 15])); // [5, 15, 19, 38, 44, 47]
+// console.log(mergeSort([19, 44, 38, 5, 47, 15])); // [5, 15, 19, 38, 44, 47]
+
+/**
+ * 
+ * @param {Array} array 
+ * @returns {number}
+ */
+function pivotHelper(array) {
+    const pivot = 0;
+    let counter = 0;
+    
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] < array[pivot]) {
+            counter++;
+            let temp = array[counter];
+            array[counter] = array[i];
+            array[i] = temp;
+        }
+    }
+
+    if (counter > 0) {
+        let temp = array[pivot];
+        array[pivot] = array[counter];
+        array[counter] = temp;
+    }
+
+    console.log(array);
+
+    return counter;
+}
+
+// console.log(pivotHelper([5, 2, 1, 8, 4, 7, 6, 3])); // 4
+// console.log(pivotHelper([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18])); // 6
+// console.log(pivotHelper([26, 23, 27, 44, 17, 47, 39, 42, 43, 1])); // 3
+
+/**
+ * 
+ * @param {Array} array 
+ * @returns {Array}
+ */
+function quickSort(array) {
+    if (array.length <= 1) {
+        return array;
+    }
+
+    return array;
+} 
+
+// console.log(quickSort([5, 2, 1, 8, 4, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8]
+// console.log(quickSort([11, 40, 40, 50, 43, 10, 30, 42, 20, 6, 19, 32, 20, 41, 23, 27])); // []
+
