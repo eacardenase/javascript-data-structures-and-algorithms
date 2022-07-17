@@ -161,14 +161,14 @@ function mergeSort(array) {
 // console.log(mergeSort([19, 44, 38, 5, 47, 15])); // [5, 15, 19, 38, 44, 47]
 
 /**
- * 
- * @param {Array} array 
+ *
+ * @param {Array} array
  * @returns {number}
  */
 function pivotHelper(array) {
     const pivot = 0;
     let counter = 0;
-    
+
     for (let i = 1; i < array.length; i++) {
         if (array[i] < array[pivot]) {
             counter++;
@@ -193,10 +193,9 @@ function pivotHelper(array) {
 // console.log(pivotHelper([4, 8, 2, 1, 5, 7, 6, 3])); // 3
 // console.log(pivotHelper([9, 4, 8, 2, 1, 5, 7, 6, 3])); // 8
 
-
 /**
- * 
- * @param {Array} array 
+ *
+ * @param {Array} array
  * @returns {Array}
  */
 function quickSort(array) {
@@ -210,12 +209,72 @@ function quickSort(array) {
     const right = quickSort(array.slice(pivotIdx + 1));
 
     return left.concat(array[pivotIdx]).concat(right);
-} 
+}
 
-console.log(quickSort([5, 2, 1, 8, 4, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8]
-console.log(quickSort([11, 40, 40, 50, 43, 10, 30, 42, 20, 6, 19, 32, 20, 41, 23, 27])); // [6, 10, 11, 19, 20, 20, 23, 27, 30, 32, 40, 40, 41, 42, 43, 50]
-console.log(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18])); // [1, 4, 11, 14, 16, 18, 28, 36, 37, 40, 41, 42]
-console.log(quickSort([26, 23, 27, 44, 17, 47, 39, 42, 43, 1])); // [1, 17, 23, 26, 27, 39, 42, 43, 44, 47]
-console.log(quickSort([4, 8, 2, 1, 5, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8]
-console.log(quickSort([9, 4, 8, 2, 1, 5, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// console.log(quickSort([5, 2, 1, 8, 4, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8]
+// console.log(quickSort([11, 40, 40, 50, 43, 10, 30, 42, 20, 6, 19, 32, 20, 41, 23, 27])); // [6, 10, 11, 19, 20, 20, 23, 27, 30, 32, 40, 40, 41, 42, 43, 50]
+// console.log(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18])); // [1, 4, 11, 14, 16, 18, 28, 36, 37, 40, 41, 42]
+// console.log(quickSort([26, 23, 27, 44, 17, 47, 39, 42, 43, 1])); // [1, 17, 23, 26, 27, 39, 42, 43, 44, 47]
+// console.log(quickSort([4, 8, 2, 1, 5, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8]
+// console.log(quickSort([9, 4, 8, 2, 1, 5, 7, 6, 3])); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+/**
+ *
+ * @param {number} number
+ * @param {number} position
+ * @returns {number}
+ */
+function getDigit(number, position) {
+    return Math.floor(Math.abs(number) / Math.pow(10, position)) % 10;
+}
+
+// console.log(getDigit(12345, 0)); // 5
+// console.log(getDigit(12345, 1)); // 4
+// console.log(getDigit(12345, 2)); // 3
+// console.log(getDigit(12345, 3)); // 2
+// console.log(getDigit(12345, 4)); // 1
+// console.log(getDigit(12345, 5)); // 0
+// console.log(getDigit(-12345, 5)); // 0
+
+/**
+ *
+ * @param {number} number
+ * @returns {number}
+ */
+function digitCount(number) {
+    if (number === 0) return 1;
+    return Math.floor(Math.log10(Math.abs(number))) + 1;
+}
+
+// console.log(digitCount(1)); // 1
+// console.log(digitCount(25)); // 2
+// console.log(digitCount(314)); // 3
+// console.log(digitCount(-314)); // 3
+
+/**
+ *
+ * @param {number[]} numberArr
+ * @returns {number}
+ */
+function mostDigits(numberArr) {
+    let max = 0;
+
+    for (let i = 0; i < numberArr.length; i++) {
+        max = Math.max(max, digitCount(numberArr[i]));
+    }
+
+    return max;
+}
+
+console.log(mostDigits([1234, 56, 7])); // 4
+console.log(mostDigits([1, 1, 11111, 1])); // 5
+console.log(mostDigits([12, 34, 56, 78])); // 2
+
+/**
+ *
+ * @param {number[]} numberArr
+ * @returns {number[]}
+ */
+function radixSort(numberArr) {
+    return numberArr;
+}
