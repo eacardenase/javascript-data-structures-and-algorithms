@@ -266,9 +266,9 @@ function mostDigits(numberArr) {
     return max;
 }
 
-console.log(mostDigits([1234, 56, 7])); // 4
-console.log(mostDigits([1, 1, 11111, 1])); // 5
-console.log(mostDigits([12, 34, 56, 78])); // 2
+// console.log(mostDigits([1234, 56, 7])); // 4
+// console.log(mostDigits([1, 1, 11111, 1])); // 5
+// console.log(mostDigits([12, 34, 56, 78])); // 2
 
 /**
  *
@@ -276,5 +276,28 @@ console.log(mostDigits([12, 34, 56, 78])); // 2
  * @returns {number[]}
  */
 function radixSort(numberArr) {
+    const mostDigitsNum = mostDigits(numberArr);
+
+    for (let i = 0; i < mostDigitsNum; i++) {
+        let buckets = [[], [], [], [], [], [], [], [], [], []];
+
+        for (let j = 0; j < numberArr.length; j++) {
+            let digit = getDigit(numberArr[j], i);
+            // @ts-ignore
+            buckets[digit].push(numberArr[j]);
+        }
+
+        numberArr = [];
+
+        buckets.forEach((arr) => (numberArr = numberArr.concat(arr)));
+    }
+
     return numberArr;
 }
+
+console.log(
+    radixSort([
+        3221, 1, 10, 9680, 577, 9420, 7, 5622, 4793, 2030, 3138, 82, 2599, 743,
+        4127,
+    ])
+);
