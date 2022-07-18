@@ -272,32 +272,61 @@ function mostDigits(numberArr) {
 
 /**
  *
+ * @param {number[]} positiveNumberArr
+ * @returns {number[]}
+ */
+function radixSort(positiveNumberArr) {
+    const mostDigitsNum = mostDigits(positiveNumberArr);
+
+    for (let i = 0; i < mostDigitsNum; i++) {
+        let buckets = Array.from({ length: 10 }, () => []);
+
+        for (let j = 0; j < positiveNumberArr.length; j++) {
+            let digit = getDigit(positiveNumberArr[j], i);
+            // @ts-ignore
+            buckets[digit].push(positiveNumberArr[j]);
+        }
+
+        positiveNumberArr = [].concat(...buckets);
+    }
+
+    return positiveNumberArr;
+}
+
+// console.log(
+//     radixSort([
+//         3221, 1, 10, 9680, 577, 9420, 7, 5622, 4793, 2030, 3138, 82, 2599, 743,
+//         4127,
+//     ])
+// );
+console.log(radixSort([23, 345, 5467, 12, 2345, 9852]));
+
+/**
+ *
  * @param {number[]} numberArr
  * @returns {number[]}
  */
-function radixSort(numberArr) {
-    const mostDigitsNum = mostDigits(numberArr);
+function randomizeArray(numberArr) {
+    let copyArray = [...numberArr];
+    const newArray = [];
 
-    for (let i = 0; i < mostDigitsNum; i++) {
-        let buckets = [[], [], [], [], [], [], [], [], [], []];
+    while (copyArray.length > 0) {
+        let randomIdx = Math.floor(Math.random() * copyArray.length);
+        newArray.push(copyArray[randomIdx]);
 
-        for (let j = 0; j < numberArr.length; j++) {
-            let digit = getDigit(numberArr[j], i);
-            // @ts-ignore
-            buckets[digit].push(numberArr[j]);
-        }
-
-        numberArr = [];
-
-        buckets.forEach((arr) => (numberArr = numberArr.concat(arr)));
+        copyArray = copyArray
+            .slice(0, randomIdx)
+            .concat(copyArray.slice(randomIdx + 1));
     }
 
-    return numberArr;
+    return newArray;
 }
 
-console.log(
-    radixSort([
-        3221, 1, 10, 9680, 577, 9420, 7, 5622, 4793, 2030, 3138, 82, 2599, 743,
-        4127,
-    ])
-);
+function randomize(arr) {
+    const arr2 = [...arr];
+    for (let i = 0; i < arr2.length - 1; i++) {
+        const j = Math.floor(Math.random() * (arr2.length - i)) + i;
+        [arr2[i], arr2[j]] = [arr2[j], arr2[i]];
+    }
+    return arr2;
+}
