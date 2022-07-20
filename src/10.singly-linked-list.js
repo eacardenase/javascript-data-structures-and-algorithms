@@ -88,15 +88,14 @@ class SinglyLinkedList {
     }
 
     get(index) {
+        if (index < 0 || index > this.length - 1) {
+            return null;
+        }
         let item = this.head;
         let counter = 0;
 
         while (counter < index) {
             item = item.next;
-
-            if (!item) {
-                return undefined;
-            }
 
             counter++;
         }
@@ -113,4 +112,4 @@ list.push(85);
 list.push(90);
 
 // console.log(list);
-console.log(list.get(0));
+console.log(list.get(5));
