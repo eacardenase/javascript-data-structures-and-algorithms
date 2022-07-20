@@ -107,13 +107,12 @@ class SinglyLinkedList {
     set(index, value) {
         const item = this.get(index);
 
-        if (!item) {
-            return false;
+        if (item) {
+            item.value = value;
+            return true;
         }
 
-        item.value = value;
-
-        return true;
+        return false;
     }
 }
 
