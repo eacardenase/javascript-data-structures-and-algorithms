@@ -86,16 +86,31 @@ class SinglyLinkedList {
 
         return this;
     }
+
+    get(index) {
+        let item = this.head;
+        let counter = 0;
+
+        while (counter < index) {
+            item = item.next;
+
+            if (!item) {
+                return undefined;
+            }
+
+            counter++;
+        }
+
+        return item;
+    }
 }
 
 let list = new SinglyLinkedList();
 
-// list.push(80);
-// list.push(81);
-// list.push(85);
-// list.push(90);
+list.push(80);
+list.push(81);
+list.push(85);
+list.push(90);
 
-console.log(list);
-console.log(list.unshift(79));
-console.log(list);
-console.log(list.unshift(69));
+// console.log(list);
+console.log(list.get(0));
