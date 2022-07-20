@@ -88,9 +88,10 @@ class SinglyLinkedList {
     }
 
     get(index) {
-        if (index < 0 || index > this.length - 1) {
+        if (index < 0 || index >= this.length) {
             return null;
         }
+
         let item = this.head;
         let counter = 0;
 
@@ -102,6 +103,18 @@ class SinglyLinkedList {
 
         return item;
     }
+
+    set(index, value) {
+        const item = this.get(index);
+
+        if (!item) {
+            return false;
+        }
+
+        item.value = value;
+
+        return true;
+    }
 }
 
 let list = new SinglyLinkedList();
@@ -112,4 +125,6 @@ list.push(85);
 list.push(90);
 
 // console.log(list);
-console.log(list.get(5));
+console.log(list.get(1));
+console.log(list.set(1, 100));
+console.log(list.get(1));
