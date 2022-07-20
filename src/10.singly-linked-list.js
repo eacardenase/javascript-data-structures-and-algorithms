@@ -39,17 +39,19 @@ class SinglyLinkedList {
         let newTail = null;
         let current = this.head;
 
-        while (current) {
+        while (current.next) {
             newTail = current;
             current = current.next;
-
-            if (!current.next) {
-                break;
-            }
         }
 
-        newTail.next = null;
         this.tail = newTail;
+
+        if (newTail) {
+            newTail.next = null;
+        } else {
+            this.head = null;
+        }
+
         this.length--;
 
         return current;
@@ -59,13 +61,14 @@ class SinglyLinkedList {
 let list = new SinglyLinkedList();
 
 list.push(80);
-list.push(81);
-list.push(85);
-list.push(90);
+// list.push(81);
+// list.push(85);
+// list.push(90);
 
 console.log(list.tail);
 console.log(list.pop());
 console.log(list.tail);
+console.log(list.head);
 
 // list.traverse();
 // console.log('Head: ', list.head);
