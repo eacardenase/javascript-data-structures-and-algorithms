@@ -71,15 +71,31 @@ class SinglyLinkedList {
 
         return currentHead;
     }
+
+    unshift(value) {
+        const newNode = new SingleNode(value);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+
+        this.length++;
+
+        return this;
+    }
 }
 
 let list = new SinglyLinkedList();
 
-list.push(80);
+// list.push(80);
 // list.push(81);
 // list.push(85);
 // list.push(90);
 
 console.log(list);
-console.log(list.shift());
+console.log(list.unshift(79));
 console.log(list);
+console.log(list.unshift(69));
