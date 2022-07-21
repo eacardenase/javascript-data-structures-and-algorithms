@@ -124,16 +124,35 @@ class SinglyLinkedList {
             this.push(value);
         } else {
             const newNode = new SingleNode(value);
-            const preItem = this.get(index - 1);
-            const postItem = preItem.next;
+            const prevItem = this.get(index - 1);
+            const postItem = prevItem.next;
 
-            preItem.next = newNode;
+            prevItem.next = newNode;
             newNode.next = postItem;
+            this.length++;
         }
 
-        this.length++;
-
         return true;
+    }
+
+    remove(index) {
+        if (index < 0 || index >= this.length) {
+            return undefined;
+        } else if (index === 0) {
+            return this.shift();
+        } else if (index === this.length - 1) {
+            return this.pop();
+        }
+
+        const prevItem = this.get(index - 1);
+        const itemToRemove = prevItem.next;
+        const postItem = itemToRemove.next;
+
+        prevItem.next = postItem;
+        itemToRemove.next = null;
+        this.length--;
+
+        return itemToRemove;
     }
 }
 
@@ -145,6 +164,5 @@ list.push(250);
 list.push(350);
 
 // console.log(list);
-console.log(list.get(0));
-console.log(list.insert(3, 50));
-console.log(list.get(0));
+console.log(list.remove(1));
+console.log(list);
