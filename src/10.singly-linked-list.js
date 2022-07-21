@@ -138,18 +138,18 @@ class SinglyLinkedList {
     remove(index) {
         if (index < 0 || index >= this.length) {
             return undefined;
-        } else if (index === 0) {
+        }
+        if (index === 0) {
             return this.shift();
-        } else if (index === this.length - 1) {
+        }
+        if (index === this.length - 1) {
             return this.pop();
         }
 
         const prevItem = this.get(index - 1);
         const itemToRemove = prevItem.next;
-        const postItem = itemToRemove.next;
 
-        prevItem.next = postItem;
-        itemToRemove.next = null;
+        prevItem.next = itemToRemove.next;
         this.length--;
 
         return itemToRemove;
@@ -164,5 +164,8 @@ list.push(250);
 list.push(350);
 
 // console.log(list);
+console.log(list.remove(0));
 console.log(list.remove(1));
+console.log(list.remove(1));
+console.log(list.remove(0));
 console.log(list);
