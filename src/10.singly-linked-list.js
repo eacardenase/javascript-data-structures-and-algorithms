@@ -156,40 +156,35 @@ class SinglyLinkedList {
     }
 
     reverse() {
-        let temp = this.tail;
-        this.tail = this.head;
-        this.head = temp;
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;
 
-        let currentNode = this.tail.next;
-        let prevNode = this.tail;
-        let nextNode = currentNode.next;
-        this.tail.next = null;
+        let prevNode = null;
+        let nextNode = null;
 
-        while (currentNode.next) {
+        for (let i = 0; i < this.length; i++) {
+            nextNode = currentNode.next;
             currentNode.next = prevNode;
             prevNode = currentNode;
             currentNode = nextNode;
-            nextNode = currentNode.next;
-
-            if (!currentNode.next) {
-                currentNode.next = prevNode;
-                break;
-            }
         }
 
-        // return this;
+        return this;
     }
 }
 
 let list = new SinglyLinkedList();
 
-list.push(13);
-list.push(27);
-list.push(32);
-list.push(71);
+list.push(100);
+list.push(201);
+list.push(250);
+list.push(350);
+list.push(999);
 
 console.log(list.reverse());
 console.log(list.get(0));
 console.log(list.get(1));
 console.log(list.get(2));
 console.log(list.get(3));
+console.log(list.get(4));
